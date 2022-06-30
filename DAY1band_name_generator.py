@@ -6,6 +6,9 @@ pet = input("What is the name of a pet?\n")
 
 print("Your band name could be " + city.title() + " " + pet.title())
 
+
+
+# extra stuff
 #swapping two variables
 
 a = 1
