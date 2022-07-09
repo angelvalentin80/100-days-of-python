@@ -38,6 +38,7 @@ while auction_ongoing:
         continue
     elif question.lower() == "no":
         highest_bid = check_highest_bid()
+        os.system('clear') # clearing the console . Forgot this existed.
         print(f"The winner is {name.capitalize()} with a bid of {highest_bid}")  
         auction_ongoing = False
     else:
