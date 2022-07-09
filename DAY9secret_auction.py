@@ -22,7 +22,7 @@ def get_highest_bid_name(highest_bid) -> str:
             return key
 
 
-auction_ongoing = True # temp
+auction_ongoing = True 
 
 while auction_ongoing:
     print("Welcome to the secret auction program.\n")
