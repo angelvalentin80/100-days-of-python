@@ -1,4 +1,6 @@
 # my solution
+import os
+
 people_in_auction = []  # empty dictionary that we will have to add into once we retrieve information
 
 def save_auction_details(name = str, bid = int):
@@ -32,6 +34,7 @@ while auction_ongoing:
     question = input("Are there any other bidders? Type 'yes' or 'no'.  ") 
 
     if question.lower() == "yes":
+        os.system('clear') # clearing the console . Forgot this existed.
         continue
     elif question.lower() == "no":
         highest_bid = check_highest_bid()
