@@ -22,7 +22,7 @@ while auction_ongoing:
 
     try:
         name = input("What is your name?   ")
-        bid = int(input("What is your bid?   "))
+        bid = int(input("What is your bid?   $"))
         if type(name) == str and type(bid) == int:
             save_auction_details(name, bid)
     except ValueError: 
