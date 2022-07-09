@@ -1,2 +1,3 @@
-string = "dogs are awesome"
-print(string.capitalize())
+string = "Angel"
+print(string.count())
+

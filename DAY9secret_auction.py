@@ -17,12 +17,19 @@ def check_highest_bid():
 auction_ongoing = True
 
 while auction_ongoing:
+    
+    print("Welcome to the secret auction program.\n")
 
-    name = input("What is your name?")
-    bid = int(input("What is your bid?"))
-    question = input("Are there any other bidders? Type 'yes' or 'no'.")
-   
-    save_auction_details(name, bid)
+    try:
+        name = input("What is your name?   ")
+        bid = int(input("What is your bid?   "))
+        if type(name) == str and type(bid) == int:
+            save_auction_details(name, bid)
+    except ValueError: 
+        print("Bid must be a number! Please enter your name and bid again\n\n")
+        continue
+
+    question = input("Are there any other bidders? Type 'yes' or 'no'.  ") 
 
     if question.lower() == "yes":
         continue
