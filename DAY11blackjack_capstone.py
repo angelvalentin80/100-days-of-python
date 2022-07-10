@@ -48,7 +48,7 @@ def check_scores():
     user_score = add_score(user_cards)
     dealer_score = add_score(dealer_cards)
     if user_score > 21:
-        print("\n\nYou went over 21! You lose :(")
+         print("\n\nYou went over 21! You lose :(")
     elif user_score == 21 and dealer_score == 21:
         print("\n\nYou both hit 21! But it's still a draw :/")
     elif dealer_score == 21:
@@ -66,33 +66,17 @@ def check_eleven():
     """Ensuring that we can make the 11 a 1 if we are over 21"""
     user_score = add_score(user_cards)
     dealer_score = add_score(dealer_cards)
-    if user_score >= 22:
-        count = 0
-        for i in user_cards:
-            if i == 11:
-                count += 1
-        change_counter = 1
-        if count >= 2:
-            for i in range(0, len(user_cards)):
-                if user_cards[i] == 11 and change_counter == 1:
-                    user_cards[i] = 11
-                    change_counter -= 1
-                else:
-                    user_cards[i] = 1
-    if dealer_score >= 22:
-        count = 0
-        for i in dealer_cards:
-            if i == 11:
-                count += 1
-        change_counter = 1
-        if count >= 2:
-            for i in range(0, len(dealer_cards)):
-                if user_cards[i] == 11 and change_counter == 1:
-                    user_cards[i] = 11
-                    change_counter -= 1
-                else:
-                    user_cards[i] = 1
-            
+
+    if user_score > 21 and user_cards[-1] == 11:
+        user_cards[-1] = 1
+    elif user_score < 21 and user_cards[-1] == 11:
+        user_cards[-1] = 11
+
+
+    if dealer_score > 21 and dealer_cards[-1] == 11:
+        dealer_cards[-1] = 1
+    elif dealer_score < 21 and dealer_cards[-1] == 11:
+        dealer_cards[-1] = 11
 
 
 def play_again_question():
@@ -118,10 +102,11 @@ while playing:
 
 
     if add_score(user_cards) >= 21:
+        check_eleven()
         check_scores()
-        game_over() # only say game over if the user goes over 21
+        game_over() 
         play_again = play_again_question()
-        print(play_again)  # this is returning True but for some reason this if statement isn't working
+        print(play_again)  
         if play_again == True:
             clear_cards()
             deal_cards()
@@ -134,11 +119,11 @@ while playing:
     hit_decision = input("Type 'y' to get another card, type 'n' to pass: ")
     if hit_decision.lower() == 'y':
         hit_me()
-        check_eleven() # checking and updating 11 to be 1 when necessary 
+        check_eleven()
         user_score = add_score(user_cards)
         if user_score >= 21:
             check_scores()
-            game_over() # only say game over if the user goes over 21
+            game_over() 
             play_again = play_again_question()
             if play_again == True:
                 clear_cards()
