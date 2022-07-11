@@ -1,5 +1,6 @@
 # my solution
 import random
+import os
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 user_cards = []
@@ -89,6 +90,7 @@ def play_again_question():
     """This is where we can tell the game to play again and go back to the top and clear the lists."""
     decision = input("\nDo you want to play a game of Blackjack? Type 'y' or 'n': ")
     if decision.lower() == 'y':
+        os.system("clear")
         return True
     elif decision.lower() == 'n':
         return False
@@ -102,6 +104,7 @@ deal_cards()
 playing = True
 
 while playing:
+    os.system("clear")
     check_eleven()
     print(f"Your cards: {user_cards},  current score: {add_score(user_cards)}")
     print(f"Computer's first card: {dealer_cards[0]}")
