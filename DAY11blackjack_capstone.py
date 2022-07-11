@@ -106,7 +106,6 @@ while playing:
         check_scores()
         game_over() 
         play_again = play_again_question()
-        print(play_again)  
         if play_again == True:
             clear_cards()
             deal_cards()
