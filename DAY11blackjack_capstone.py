@@ -16,6 +16,10 @@ def give_computer_cards():
         card = random.choice(cards)
         dealer_cards.append(card)
 
+def dealer_draw_a_card():
+    card = random.choice(cards)
+    return card
+
 def hit_me():
     card = random.choice(cards)
     user_cards.append(card)
@@ -48,7 +52,9 @@ def check_scores():
     user_score = add_score(user_cards)
     dealer_score = add_score(dealer_cards)
     if user_score > 21:
-         print("\n\nYou went over 21! You lose :(")
+        print("\n\nYou went over 21! You lose :(")
+    elif dealer_score > 21:
+        print("\n\nDealer busted! You win !!")
     elif user_score == 21 and dealer_score == 21:
         print("\n\nYou both hit 21! But it's still a draw :/")
     elif dealer_score == 21:
@@ -100,7 +106,6 @@ while playing:
     print(f"Your cards: {user_cards},  current score: {add_score(user_cards)}")
     print(f"Computer's first card: {dealer_cards[0]}")
 
-
     if add_score(user_cards) >= 21:
         check_eleven()
         check_scores()
@@ -109,11 +114,9 @@ while playing:
         if play_again == True:
             clear_cards()
             deal_cards()
-            cards[0] = 11
             continue
         else:
             playing = False
-
 
     hit_decision = input("Type 'y' to get another card, type 'n' to pass: ")
     if hit_decision.lower() == 'y':
@@ -127,20 +130,23 @@ while playing:
             if play_again == True:
                 clear_cards()
                 deal_cards()
-                cards[0] = 11
                 continue
             else:
                 playing = False
         else:
             continue
     elif hit_decision.lower() == 'n':
+        while add_score(dealer_cards) < 17:
+            card = dealer_draw_a_card()
+            dealer_cards.append(card)
+            print(f"{dealer_cards}")
+
         check_scores()
         game_over()
         play_again = play_again_question()
         if play_again == True:
             clear_cards()
             deal_cards()
-            cards[0] = 11
             continue
         else:
             playing = False
