@@ -1,4 +1,9 @@
+# my solution
 import random
+
+
+
+
 
 attempts = 0
 numbers_list = []
