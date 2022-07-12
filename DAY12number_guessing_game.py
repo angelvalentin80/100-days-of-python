@@ -1,16 +1,11 @@
-# my solution
+# using rand int, instead of a list. Way more cleaner 
 import random
 
 attempts = 0
-numbers_list = []
-
-# adding in our numbers
-for i in range(1, 101):
-    numbers_list.append(i)
 
 def pick_random_number() -> int:
     """We can return a random number from the list"""
-    random_number = random.choice(numbers_list)
+    random_number = random.randint(1,100)
     return random_number
 
 random_number = pick_random_number()
