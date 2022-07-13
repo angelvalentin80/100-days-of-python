@@ -1,5 +1,6 @@
 # my solution
 import random
+from art import logo, vs
 from game_data import data 
 import os
 
@@ -42,6 +43,7 @@ game_on = True
 
 while game_on:
     os.system("clear")
+    print(logo)
     if score > 0:
         print(f"You're right! Current score: {score}\n")
         famous_person1 = history[-1]
@@ -53,10 +55,9 @@ while game_on:
     
     history.append(famous_person2)
 
-
     print(f"Compare A: {comparison_statement(famous_person1)}")
 
-    print("\n\nVS\n\n")
+    print(vs)
 
     print(f"Against B: {comparison_statement(famous_person2)}\n")
     choice = input("Who has more followers? Type 'A' or 'B': ")
