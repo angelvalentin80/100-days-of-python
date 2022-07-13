@@ -1,6 +1,7 @@
 # my solution
 import random
 from game_data import data 
+import os
 
 score = 0
 
@@ -22,7 +23,7 @@ def comparison_statement(person = dict):
     name = person['name']
     description = person['description']
     country = person['country']
-    return f"{name.title()}, a {description}, from {country.title()}"
+    return f"{name.title()}, a {description}, from {country.title()}."
 
 def calculate_winner(person1, person2):
     """Calculate who has the most amount of followers and return that person"""
@@ -36,25 +37,31 @@ def calculate_winner(person1, person2):
 
 game_on = True
 while game_on:
+    os.system("clear")
     famous_person1 = get_random_person()  
     famous_person2 = get_random_person() 
     
     famous_person1 = calculate_same_followers(famous_person1, famous_person2)
+
+    if score > 0:
+        print(f"You're right! Current score: {score}\n") 
+    
     
 
     print(f"Compare A: {comparison_statement(famous_person1)}")
 
     print("\n\nVS\n\n")
 
-    print(f"Against B: {comparison_statement(famous_person2)}")
+    print(f"Against B: {comparison_statement(famous_person2)}\n")
     choice = input("Who has more followers? Type 'A' or 'B': ")
     winner = calculate_winner(famous_person1, famous_person2)
 
     if choice.lower() == winner.lower():
         score += 1
-        print(f"You're right! Current score: {score}\n") 
+        os.system("clear")
         continue
     else:
+        os.system("clear")
         print(f"Sorry, that's wrong. Final score: {score}")
         game_on = False
 
