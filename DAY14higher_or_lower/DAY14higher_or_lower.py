@@ -4,6 +4,7 @@ from game_data import data
 import os
 
 score = 0
+history = []
 
 def get_random_person() -> dict:
     """This is going to be grabbing a random person from the data and returning them"""
@@ -16,7 +17,7 @@ def calculate_same_followers(p1 = dict, p2 = dict):
         substitute = get_random_person()
         return substitute 
     else:
-        return p1
+        return p2
 
 def comparison_statement(person = dict):
     """This is the print statement where we announce the person and describe that person"""
@@ -35,18 +36,23 @@ def calculate_winner(person1, person2):
     elif person2_followers > person1_followers:
         return "b"
 
+famous_person1 = get_random_person()
+
 game_on = True
+
 while game_on:
     os.system("clear")
-    famous_person1 = get_random_person()  
+    if score > 0:
+        print(f"You're right! Current score: {score}\n")
+        famous_person1 = history[-1]
+        history.clear()
+
     famous_person2 = get_random_person() 
     
-    famous_person1 = calculate_same_followers(famous_person1, famous_person2)
+    famous_person2 = calculate_same_followers(famous_person1, famous_person2)
+    
+    history.append(famous_person2)
 
-    if score > 0:
-        print(f"You're right! Current score: {score}\n") 
-    
-    
 
     print(f"Compare A: {comparison_statement(famous_person1)}")
 
