@@ -18,6 +18,7 @@ def calculate_same_followers(p1 = dict, p2 = dict):
         return p1
 
 def comparison_statement(person = dict):
+    """This is the print statement where we announce the person and describe that person"""
     name = person['name']
     description = person['description']
     country = person['country']
@@ -57,13 +58,5 @@ while game_on:
         print(f"Sorry, that's wrong. Final score: {score}")
         game_on = False
 
-# ex
 
 
-
-# every time you get a comparison right, 
-# You're right! Current score: (UPDATED SCORE)
-
-
-# and when you get one wrong, the game is over and you lose and it displays your final score
-# Sorry, that's wrong. Final score: 0 <<< whatever the final score is
